@@ -7,6 +7,10 @@ const setupInput = function(conn) {
   connection = conn;
   const handleUserInput = function() {
     stdin.on('data', (data) =>  {
+      if (data === "@") {
+        // console.log('up');
+        connection.write("Say: OLA");
+      }
       if (data === '\u0003') {
         process.exit();
       }
@@ -33,3 +37,8 @@ const setupInput = function(conn) {
 };
 
 module.exports = { setupInput };
+
+// stdin.on('data', function(data) {
+//   console.log("I WROTE THIS: ", data);
+//   client.write(data);
+// });
